@@ -1,0 +1,6 @@
+# data handling
+pandas
+
+# data download
+roboflow
+
