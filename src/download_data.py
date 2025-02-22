@@ -12,6 +12,7 @@ load_dotenv(CURR_DIR.parent / ".env", override=True)
 
 
 def download_cv_data():
+    # Link to dataset: https://universe.roboflow.com/boxprediction/box-classification-s2q1a/dataset/1#
     # connect with roboflow
     rf = Roboflow(api_key=os.getenv("ROBOFLOW_API_KEY"))
     # define project to download
@@ -29,6 +30,7 @@ def download_cv_data():
 
 
 def download_llm_data():
+    # link to dataset: https://www.goodnotes.com/gnhk
     # download data from google drive
     file_ids = [
         "1h17XM7o8DaQenP_b3XbtJ4MSm2gwXgIK",
