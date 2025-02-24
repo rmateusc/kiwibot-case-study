@@ -140,10 +140,22 @@ conda activate kiwibot-case-study
 pip install -r requirements.txt
 ```
 
+Then download the data by executing the following command:
+
+```bash
+python src/download_data.py
+```
+
+Next, train the model by executing the following command:
+
+```bash
+python src/cv_model.py
+```
+
 Finally, run the visualizer script:
 
 ```bash
-python gradio_ui.py
+python src/gradio_ui.py
 ```
 
 Then open the provided URL in a web browser to interact with the model.
