@@ -21,6 +21,8 @@ The code implements an end-to-end deep learning pipeline using PyTorch. It perfo
 
 ### 1. Data Preparation and Custom Dataset
 
+The dataset used for this problem can be found at: https://universe.roboflow.com/boxprediction/box-classification-s2q1a/dataset/1
+
 - **BoxDataset Class:**
   - **CSV Handling:** Reads a CSV file containing image filenames and one-hot encoded labels for the classes " EMPTY", " FULL", and " PARTIAL".
   - **Label Conversion:** Converts one-hot encoded labels to a single integer value:
@@ -168,7 +170,44 @@ http://127.0.0.1:7860
 
 ## Next Steps
 
+### Computer Vision
 
 - **Transfer Learning:** Consider leveraging pre-trained models (e.g., ResNet, VGG) to improve feature extraction and reduce training time.
 - **Model Optimization:** Explore techniques such as quantization or pruning to deploy the model on edge devices with limited resources.
 - **Integration and Deployment:** Develop a deployment strategy (e.g., a web service or mobile app) to integrate the model into a production environment.
+- **ToF Camera Integration:** Investigate the use of Time-of-Flight (ToF) cameras for depth sensing to enhance box classification accuracy.
+
+# Handwritten Text Detection Model: Brief Report
+
+Handwritten text detection is essential for applications like digitizing documents and automating postal sorting. This report briefly outlines three approaches: building a model from scratch, using transfer learning, and fine-tuning a pre-trained model.
+
+## 1. Data and Challenges
+- **Datasets:** A dataset useful for exploration is https://www.goodnotes.com/gnhk
+- **Challenges:** Variability in handwriting, noise/artifacts, complex layouts, and limited annotations.
+
+## 2. Approaches
+
+### Approach 1: Model from Scratch
+- **Method:** Design a custom CNN (possibly with segmentation models like U-Net) or add sequence modeling (e.g., LSTM) for context.
+- **Pros:** Full control over architecture; tailored to handwriting nuances.
+- **Cons:** Requires large annotated datasets and significant computational resources.
+
+### Approach 2: Transfer Learning
+- **Method:** Use a pre-trained CNN (e.g., on ImageNet) as a fixed feature extractor, adding custom detection layers.
+- **Pros:** Faster training and reduced data needs.
+- **Cons:** Pre-trained features may not perfectly capture handwriting specifics.
+
+### Approach 3: Fine-Tuning
+- **Method:** Start with a pre-trained model and fine-tune selected layers using a low learning rate.
+- **Pros:** Balances robustness of pre-trained models with domain-specific adaptation.
+- **Cons:** Needs careful hyperparameter tuning to avoid overfitting, especially with limited data.
+
+## 4. Evaluation
+- **Metrics:** Precision, recall, F1-score, and IoU for region localization.
+- **Validation:** Cross-validation to ensure generalization.
+
+## 5. Conclusion
+- **From Scratch:** Ideal for large, high-quality datasets.
+- **Transfer Learning:** Quick and efficient for limited data scenarios.
+- **Fine-Tuning:** Offers a balanced approach for adapting pre-trained models to handwriting detection.
+
