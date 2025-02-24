@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -9,6 +10,8 @@ from PIL import Image
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from torch.utils.data import DataLoader, Dataset
 from torchvision import models, transforms
+
+CURR_DIR = Path(__file__).parent
 
 
 class BoxDataset(Dataset):
@@ -106,13 +109,13 @@ val_transforms = transforms.Compose(
 # Assume BoxDataset is defined as before
 # Create DataLoaders for training and validation
 train_dataset = BoxDataset(
-    csv_file="/home/rmateusc/repositories/personal/kiwibot-case-study/data/box_classification/train/_classes.csv",
-    img_dir="/home/rmateusc/repositories/personal/kiwibot-case-study/data/box_classification/train",
+    csv_file=CURR_DIR.parent / "data" / "box_classification" / "train" / "_classes.csv",
+    img_dir=CURR_DIR.parent / "data" / "box_classification" / "train",
     transform=train_transforms,
 )
 val_dataset = BoxDataset(
-    csv_file="/home/rmateusc/repositories/personal/kiwibot-case-study/data/box_classification/valid/_classes.csv",
-    img_dir="/home/rmateusc/repositories/personal/kiwibot-case-study/data/box_classification/valid",
+    csv_file=CURR_DIR.parent / "data" / "box_classification" / "valid" / "_classes.csv",
+    img_dir=CURR_DIR.parent / "data" / "box_classification" / "valid",
     transform=val_transforms,
 )
 
@@ -162,6 +165,7 @@ for epoch in range(num_epochs):
     val_acc = val_running_corrects.double() / len(val_dataset)
     print(f"Validation - Loss: {val_loss:.4f} Acc: {val_acc:.4f}")
 
+torch.save(model.state_dict(), CURR_DIR.parent / "models" / "model.pth")
 
 # Ensure the model is in evaluation mode
 model.eval()
@@ -171,8 +175,8 @@ model = model.to(device)
 
 # Create the test dataset instance using your CSV file and image directory
 test_dataset = BoxDataset(
-    csv_file="/home/rmateusc/repositories/personal/kiwibot-case-study/data/box_classification/test/_classes.csv",
-    img_dir="/home/rmateusc/repositories/personal/kiwibot-case-study/data/box_classification/test",
+    csv_file=CURR_DIR.parent / "data" / "box_classification" / "test" / "_classes.csv",
+    img_dir=CURR_DIR.parent / "data" / "box_classification" / "test",
     transform=val_transforms,
 )
 
