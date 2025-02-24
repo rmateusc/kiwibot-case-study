@@ -10,3 +10,6 @@ gdown
 sickit-learn==1.6.1
 torch==1.11.0
 torchvision==0.12.0
+
+# UI
+gradio==5.17.1
