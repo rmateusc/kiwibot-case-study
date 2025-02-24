@@ -177,7 +177,7 @@ http://127.0.0.1:7860
 - **Integration and Deployment:** Develop a deployment strategy (e.g., a web service or mobile app) to integrate the model into a production environment.
 - **ToF Camera Integration:** Investigate the use of Time-of-Flight (ToF) cameras for depth sensing to enhance box classification accuracy.
 
-# Handwritten Text Detection Model: Brief Report
+# Handwritten Text Detection Model: Brief Report (TO DO)
 
 Handwritten text detection is essential for applications like digitizing documents and automating postal sorting. This report briefly outlines three approaches: building a model from scratch, using transfer learning, and fine-tuning a pre-trained model.
 
