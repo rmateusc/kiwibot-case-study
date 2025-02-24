@@ -66,4 +66,4 @@ def download_llm_data():
 
 if __name__ == "__main__":
     download_cv_data()
-    download_llm_data()
+    # download_llm_data()
