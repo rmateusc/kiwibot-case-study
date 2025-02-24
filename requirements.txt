@@ -1,10 +1,12 @@
 # data handling
-pandas
+pandas==2.2.3
+numpy==1.23.5
 
 # data download
 roboflow
 gdown
 
 # ML/DL Models
-pytorch==1.11.0
+sickit-learn==1.6.1
+torch==1.11.0
 torchvision==0.12.0
